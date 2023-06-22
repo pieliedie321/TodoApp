@@ -1,0 +1,14 @@
+.stroke {
+    text-decoration: line-through;
+}
+
+.delete-button {
+    padding: 0;
+    border: none;
+    background: none;
+    color: red;
+}
+
+.task {
+    display: flex;
+}
