@@ -5,17 +5,17 @@ import { Task } from "../model/Task";
     providedIn: 'root',
 })
 export class StoreTaskService {
-    private TASK_ARRAY: string = 'taskList';
+    private TASK_ARRAY: string = 'taskArray';
 
-    getTaskArray(): Task[] {
+    public getTaskArray(): Task[] {
         return JSON.parse(localStorage.getItem(this.TASK_ARRAY) ?? '[]');
     }
 
-    saveTaskArray(taskArray: Task[]): void {
-        localStorage.setItem(this.TASK_ARRAY, JSON.stringify(taskArray))
+    public saveTaskArray(taskArray: Task[]): void {
+        localStorage.setItem(this.TASK_ARRAY, JSON.stringify(taskArray));
     }
 
-    removeTaskArray() {
+    public removeTaskArray() {
         localStorage.removeItem(this.TASK_ARRAY);
     }
 }
