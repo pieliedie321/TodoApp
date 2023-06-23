@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from '../model/Task';
-import { StoreTaskService } from '../services/StoreTasksService';
+import { Task } from '../model/task';
+import { StoreTaskService } from '../services/store-tasks.service';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +27,10 @@ export class AppComponent implements OnInit {
   }
 
   public deleteTask(index: number): void {
+    if (!confirm('Вы действительно хотите удалить запись?')) {
+      return;
+    }
+
     this.taskArray.splice(index, 1);
     this.service.saveTaskArray(this.taskArray);
   }
@@ -38,6 +42,10 @@ export class AppComponent implements OnInit {
   }
 
   public clearAllTasks(): void {
+    if (!confirm('Вы действительно хотите удалить все записи?')) {
+      return;
+    }
+
     this.taskArray = [];
     this.service.removeTaskArray();
   }
