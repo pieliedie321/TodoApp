@@ -15,7 +15,7 @@ export class StoreTaskService {
         localStorage.setItem(this.TASK_ARRAY, JSON.stringify(taskArray));
     }
 
-    public removeTaskArray() {
+    public removeTaskArray(): void {
         localStorage.removeItem(this.TASK_ARRAY);
     }
 }
