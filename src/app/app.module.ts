@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './components/app.component';
-import { StoreTaskService } from './services/StoreTasksService';
+import { StoreTaskService } from './services/store-tasks.service';
 
 @NgModule({
   declarations: [
