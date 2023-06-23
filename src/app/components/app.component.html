@@ -1,15 +1,13 @@
 <h2>Напишите список ваших дел: </h2>
+<input [(ngModel)]="task" type="text" placeholder="Введите пункт" (keyup.enter)="addNewTask()" />
+<div>
+    <button class="button-pos" (click)="addNewTask()">Добавить</button>
+    <button class="button-pos" (click)="clearAllTasks()">Очистить</button>
+</div>
 <ul>
-    <input [(ngModel)]="task" type="text" placeholder="Введите пункт" (keyup.enter)="addNewTask()" />
-    <div>
-        <button (click)="addNewTask()">Добавить</button>
-        <button (click)="clearAllTasks()">Очистить</button>
-    </div>
-
-
     <li class="task" *ngFor="let task of taskArray; let i = index" [attr.data-index]="i" [class.stroke]="task.isDone">
-        {{ task.value }}
-        <input type="checkbox" *ngIf="!task.isDone" [(ngModel)]="task.isDone" (click)="saveTaskArray()" />
+        <label>{{ task.value }}</label>
+        <input type="checkbox" *ngIf="!task.isDone" [(ngModel)]="task.isDone" (click)="updateTask(i)" />
         <button class="delete-button" *ngIf="!task.isDone" (click)="deleteTask(i)">X</button>
     </li>
 </ul>

@@ -9,6 +9,9 @@
     color: red;
 }
 
-.task {
-    display: flex;
+.button-pos {
+    position: relative;
+    top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 }

@@ -11,33 +11,39 @@ import { StoreTaskService } from '../services/StoreTasksService';
 
 export class AppComponent implements OnInit {
 
-  task: string = '';
-  taskArray: Task[] = [];
+  public task: string = '';
+  public taskArray: Task[] = [];
 
   constructor(private service: StoreTaskService) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.taskArray = this.service.getTaskArray();
   }
 
-  addNewTask(): void {
-    this.taskArray.push(new Task(this.task, false));
+  public addNewTask(): void {
+    this.taskArray.unshift(new Task(this.task, false));
     this.clearTaskField();
     this.service.saveTaskArray(this.taskArray);
   }
 
-  deleteTask(index: number): void {
+  public deleteTask(index: number): void {
     this.taskArray.splice(index, 1);
     this.service.saveTaskArray(this.taskArray);
   }
 
-  saveTaskArray(): void {
-    this.service.saveTaskArray(this.taskArray);
+  public updateTask(i: number): void {
+    let task: Task = this.taskArray[i];
+    task.isDone = !task.isDone;
+    this.saveTaskArray();
   }
 
-  clearAllTasks(): void {
+  public clearAllTasks(): void {
     this.taskArray = [];
     this.service.removeTaskArray();
+  }
+
+  private saveTaskArray(): void {
+    this.service.saveTaskArray(this.taskArray);
   }
 
   private clearTaskField(): void {
